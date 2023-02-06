@@ -1,25 +1,24 @@
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class RomanFormat implements Format {
-
+class Arabic implements FormatTemplate {
     @Override
     public Predicate<String> validator() {
-        return str -> str.matches("^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$");
+        return str -> str.matches("^-?[0-9]*$");
     }
 
     @Override
     public Function<String, Integer> parser() {
-        return RomanConverter::parse;
+        return Integer::parseInt;
     }
 
     @Override
     public Function<Integer, String> printer() {
-        return RomanConverter::print;
+        return String::valueOf;
     }
 
     @Override
     public Predicate<Integer> definition() {
-        return x -> x > 0;
+        return x -> true;
     }
 }
