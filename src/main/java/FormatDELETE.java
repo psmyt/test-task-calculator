@@ -1,0 +1,4 @@
+enum FormatDELETE {
+    ARABIC,
+    ROMAN
+}
