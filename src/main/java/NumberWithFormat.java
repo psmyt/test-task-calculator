@@ -1,11 +1,11 @@
 import java.util.Arrays;
 
 class NumberWithFormat {
-    private final SupportedFormat format;
+    private final Formatter format;
 
     final int value;
 
-    NumberWithFormat(SupportedFormat format, int value) {
+    NumberWithFormat(Formatter format, int value) {
         if (format.isDefinedFor(value)) this.value = value;
         else throw new IllegalArgumentException(
                 String.format("the value of %s is not defined for format %s",
@@ -15,7 +15,7 @@ class NumberWithFormat {
     }
 
     NumberWithFormat(String input) {
-        this.format = Arrays.stream(SupportedFormat.values())
+        this.format = Arrays.stream(Formatter.values())
                 .filter(f -> f.validate(input))
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException(
@@ -35,7 +35,7 @@ class NumberWithFormat {
         return format.name();
     }
 
-    public SupportedFormat getFormat() {
+    public Formatter getFormat() {
         return format;
     }
 

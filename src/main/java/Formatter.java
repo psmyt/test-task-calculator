@@ -1,9 +1,9 @@
-enum SupportedFormat {
+enum Formatter {
     ROMAN(new Roman()),
     ARABIC(new Arabic());
 
     private final Format format;
-    SupportedFormat(Format format) {
+    Formatter(Format format) {
         this.format = format;
     }
 
