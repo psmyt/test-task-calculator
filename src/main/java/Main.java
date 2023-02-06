@@ -14,13 +14,13 @@ public class Main {
     }
 
     public static String calc(String input) {
-        String[] split = input.split(" ");
-        if (split.length != 3)
+        String[] inputs = input.split(" ");
+        if (inputs.length != 3)
             throw new IllegalArgumentException("unexpected number of members in expression");
-        NumberWithFormat a = new NumberWithFormat(split[0]);
-        NumberWithFormat b = new NumberWithFormat(split[2]);
+        NumberWithFormat a = new NumberWithFormat(inputs[0]);
+        NumberWithFormat b = new NumberWithFormat(inputs[2]);
         validate(a, b);
-        Operation operation = new Operation(split[1]);
+        Operation operation = new Operation(inputs[1]);
         return operation.apply(a, b).print();
     }
 

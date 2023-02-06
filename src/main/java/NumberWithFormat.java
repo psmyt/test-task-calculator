@@ -10,7 +10,7 @@ class NumberWithFormat {
         else throw new IllegalArgumentException(
                 String.format("the value of %s is not defined for format %s",
                         value,
-                        format.name().toLowerCase()));
+                        format.name()));
         this.format = format;
     }
 
