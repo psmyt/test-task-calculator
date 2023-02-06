@@ -1,7 +1,7 @@
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-class Arabic implements FormatTemplate {
+class Arabic implements Format {
     @Override
     public Predicate<String> validator() {
         return str -> str.matches("^-?[0-9]*$");
