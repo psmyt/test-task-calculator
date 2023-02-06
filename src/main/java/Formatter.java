@@ -1,25 +1,14 @@
-enum Formatter {
-    ROMAN(new Roman()),
-    ARABIC(new Arabic());
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-    private final Format format;
-    Formatter(Format format) {
-        this.format = format;
-    }
+interface Formatter {
 
-    public boolean validate(String input) {
-        return format.validator().test(input);
-    }
+    public Predicate<String> validator();
 
-    public int parse(String input) {
-        return format.parser().apply(input);
-    }
+    public Function<String, Integer> parser();
 
-    public String print(int value) {
-        return format.printer().apply(value);
-    }
+    public Function<Integer, String> printer();
 
-    public boolean isDefinedFor(int value) {
-        return format.definition().test(value);
-    }
+    public Predicate<Integer> definition();
+
 }

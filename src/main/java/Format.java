@@ -1,14 +1,25 @@
-import java.util.function.Function;
-import java.util.function.Predicate;
+enum Format {
+    ROMAN(new Roman()),
+    ARABIC(new Arabic());
 
-interface Format {
+    private final Formatter format;
+    Format(Formatter format) {
+        this.format = format;
+    }
 
-    public Predicate<String> validator();
+    public boolean validate(String input) {
+        return format.validator().test(input);
+    }
 
-    public Function<String, Integer> parser();
+    public int parse(String input) {
+        return format.parser().apply(input);
+    }
 
-    public Function<Integer, String> printer();
+    public String print(int value) {
+        return format.printer().apply(value);
+    }
 
-    public Predicate<Integer> definition();
-
+    public boolean isDefinedFor(int value) {
+        return format.definition().test(value);
+    }
 }
