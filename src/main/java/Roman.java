@@ -1,7 +1,7 @@
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-class Roman implements Format {
+class Roman implements Formatter {
 
     @Override
     public Predicate<String> validator() {
