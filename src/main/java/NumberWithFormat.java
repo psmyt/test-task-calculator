@@ -6,11 +6,10 @@ class NumberWithFormat {
     final int value;
 
     NumberWithFormat(Format format, int value) {
-        if (format.isDefinedFor(value)) this.value = value;
-        else throw new IllegalArgumentException(
+        if (!format.isDefinedFor(value)) throw new IllegalArgumentException(
                 String.format("format %s is not defined for the value of %s",
-                        format.name(),
-                        value));
+                        format.name(), value));
+        this.value = value;
         this.format = format;
     }
 
@@ -27,7 +26,7 @@ class NumberWithFormat {
         return format.print(value);
     }
 
-    public boolean isSameFormat(NumberWithFormat number) {
+    public boolean isSameFormatAs(NumberWithFormat number) {
         return number.format.equals(this.format);
     }
 

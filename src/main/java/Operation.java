@@ -7,14 +7,15 @@ class Operation {
             NumberWithFormat> operation;
 
     Operation(String input) {
+        BiFunction<Integer, Integer, Integer> function = parseOperation(input);
         operation = (a, b) -> {
-            if (!a.isSameFormat(b))
+            if (!a.isSameFormatAs(b))
                 throw new IllegalArgumentException(String.format("format mismatch: %s and %s",
                         a.printFormat(),
                         b.printFormat()));
             return new NumberWithFormat(
                     a.getFormat(),
-                    parseOperation(input).apply(a.value, b.value));
+                    function.apply(a.value, b.value));
         };
     }
 
